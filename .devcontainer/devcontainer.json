@@ -1,0 +1,50 @@
+// Default Ubuntu-based DevContainer Template.
+// For more customization options, see https://containers.dev/implementors/json_reference
+{
+  "name": "PHP & MariaDB",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+
+  workspaceFolder: "/home/dev/online-texture-swapper",
+  customizations : {
+    // Configure JetBrains IDE-specific properties
+    jetbrains : {
+      backend : "PhpStorm",
+      settings : {
+        com
+        "com.intellij:app:HttpConfigurable.use_proxy_pac": true,
+        "com.intellij:app:BaseRefactoringSettings.safe_delete_when_delete": false,
+        "com.intellij:app:BaseRefactoringSettings.rename_search_in_comments_for_file": false,
+        "com.intellij:app:BaseRefactoringSettings.rename_search_for_text_for_file": false,
+        "com.intellij:app:BaseRefactoringSettings.rename_search_for_references_for_file": false
+
+        // IDE settings can be added via “Show context actions”|“Add currently modified settings from IDE”.
+        // A complete list of supported settings is also available through auto-completion
+      },
+      plugins: [
+        "com.intellij.ml.llm",
+        "de.espend.idea.php.annotation",
+        "fr.adrienbrault.idea.symfony2plugin",
+        "ru.adelf.idea.dotenv"
+      ]
+    }
+  },
+  "forwardPorts": [
+    443,
+    8000,
+    "db:3306",
+    22,
+    80
+  ],
+  features: {
+    "ghcr.io/devcontainers/features/git" : {}
+    // Add additional features to your project using auto-completion.
+  },
+  postStartCommand: [
+    "php -S 0.0.0.0:8000 -t /home/dev/online-texture-swapper",
+    "php /home/dev/online-texture-swapper/servier/bin/console secrets:decrypt-to-local --env=dev --force", // Dev by default
+    "git config --global --add safe.directory /home/dev/online-texture-swapper"
+  ],
+  // Comment out to connect as the root user.
+  remoteUser: "ubuntu"
+}

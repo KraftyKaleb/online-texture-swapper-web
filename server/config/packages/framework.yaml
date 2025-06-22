@@ -1,0 +1,25 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+
+    #esi: true
+    #fragments: true
+    router:
+        strict_requirements: null
+        utf8: true
+
+    handle_all_throwables: true
+
+    php_errors:
+        log: true
+
+when@dev:
+    framework:
+        router:
+            strict_requirements: true
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

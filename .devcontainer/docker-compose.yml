@@ -1,0 +1,36 @@
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+      args:
+        - "bind-address=0.0.0.0"
+    restart: unless-stopped
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: somepasswordlol
+      MARIADB_USER: online_texture_swapper
+      MARIADB_PASSWORD: changemeinprod123
+    ports:
+      - "3306:3306"
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+
+    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
+    ports:
+      - "8000:8000"
+    links:
+      - "db:database"
+
+
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+
+
+volumes:
+  mariadb-data:

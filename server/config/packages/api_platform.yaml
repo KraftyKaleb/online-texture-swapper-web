@@ -1,0 +1,33 @@
+api_platform:
+    title: Hello API Platform
+    version: 1.0.0
+    formats:
+        jsonld: ['application/json']
+    docs_formats:
+        jsonld: ['application/json']
+        jsonopenapi: ['application/vnd.openapi+json']
+        html: ['text/html']
+    defaults:
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+        extra_properties:
+            standard_put: true
+            rfc_7807_compliant_errors: true
+        normalization_context:
+            skip_null_values: false
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/Model'
+    use_symfony_listeners: true
+
+#    exception_to_status:
+#        App\Exception\UserExistsException:
+#          !php/const Symfony\Component\HttpFoundation\Response::HTTP_CONFLICT
+
+#when@prod:
+#    api_platform:
+#        enable_docs: false
+#        enable_entrypoint: false
+#        enable_swagger: false
+#        enable_swagger_ui: false
