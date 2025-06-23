@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'DB_URL' => null,
+    'APP_SECRET' => null,
+    'DATABASE_URL' => null,
 ];
