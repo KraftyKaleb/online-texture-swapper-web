@@ -11,7 +11,6 @@
     jetbrains : {
       backend : "PhpStorm",
       settings : {
-        com
         "com.intellij:app:HttpConfigurable.use_proxy_pac": true,
         "com.intellij:app:BaseRefactoringSettings.safe_delete_when_delete": false,
         "com.intellij:app:BaseRefactoringSettings.rename_search_in_comments_for_file": false,
