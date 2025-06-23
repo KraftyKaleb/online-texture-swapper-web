@@ -39,11 +39,12 @@
     "ghcr.io/devcontainers/features/git" : {}
     // Add additional features to your project using auto-completion.
   },
-  postStartCommand: [
-    "php -S 0.0.0.0:8000 -t /home/dev/online-texture-swapper &&",
-    "php /home/dev/online-texture-swapper/servier/bin/console secrets:decrypt-to-local --env=dev --force &&", // Dev by default
-    "git config --global --add safe.directory /home/dev/online-texture-swapper"
-  ],
+  postStartCommand: {
+    "php": "php -S 0.0.0.0:8000 -t /home/dev/online-texture-swapper",
+    "env": "php /home/dev/online-texture-swapper/servier/bin/console secrets:decrypt-to-local --env=dev --force",
+    // Dev by default
+    "git": "git config --global --add safe.directory /home/dev/online-texture-swapper"
+  },
   // Comment out to connect as the root user.
   remoteUser: "ubuntu"
 }
