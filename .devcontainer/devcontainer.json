@@ -41,7 +41,7 @@
     // Add additional features to your project using auto-completion.
   },
   postStartCommand: {
-    "composer": "composer --working-dir=/home/dev/online-texture-swapper/server install && php /home/dev/online-texture-swapper/server/bin/console secrets:decrypt-to-local --force && php /home/dev/online-texture-swapper/server/bin/console doctrine:database:create 2>/dev/null && php /home/dev/online-texture-swapper/server/bin/console doctrine:schema:update --force",
+    "composer": "composer --working-dir=/home/dev/online-texture-swapper/server install && php /home/dev/online-texture-swapper/server/bin/console secrets:decrypt-to-local --force && php /home/dev/online-texture-swapper/server/bin/console doctrine:database:create --if-not-exists && php /home/dev/online-texture-swapper/server/bin/console doctrine:schema:update --force",
     "php": "php -S 0.0.0.0:8000 -t /home/dev/online-texture-swapper/server",
     // Dev by default
     "git": "git config --global --add safe.directory /home/dev/online-texture-swapper",
