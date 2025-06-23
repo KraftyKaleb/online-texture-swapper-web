@@ -44,7 +44,9 @@
     "composer": "composer --working-dir=/home/dev/online-texture-swapper/server install && php /home/dev/online-texture-swapper/server/bin/console secrets:decrypt-to-local --force",
     "php": "php -S 0.0.0.0:8000 -t /home/dev/online-texture-swapper/server",
     // Dev by default
-    "git": "git config --global --add safe.directory /home/dev/online-texture-swapper"
+    "git": "git config --global --add safe.directory /home/dev/online-texture-swapper",
+    // Create the database or update the schema if it already exists
+    "database": "/home/dev/online-texture-swapper/server/bin/console doctrine:database:create 2>/dev/null && /home/dev/online-texture-swapper/server/bin/console doctrine:schema:update --force"
   },
   // Comment out to connect as the root user.
   remoteUser: "ubuntu"
